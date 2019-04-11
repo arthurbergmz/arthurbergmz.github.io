@@ -1,8 +1,8 @@
 import './style/_build.scss'
 
-function getElementsByClass(elementClass) {
+function getElements(elementClass) {
   return elementClass.reduce((obj, clazz) => {
-    const el = document.getElementsByClassName(clazz)[0]
+    const el = document.querySelector(clazz)
     obj[clazz] = {
       click: (handler) => el.addEventListener('click', (event) => handler(event, el)),
       css: (property, value) => value === undefined ? el.style[property] : el.style[property] = value === null ? 0 : value,
@@ -28,12 +28,12 @@ function reactivity (initialState) {
   })
 }
 
-const appElements = getElementsByClass([
-  'app-wrapper', 'app-menu', 'app-menu__header', 'app-menu__back-button', 'app-menu__show-button', 'app-menu__body', 'app-menu__body-wrapper'
+const appElements = getElements([
+  '.app-wrapper', '.app-menu', '.app-menu__header', '.app-menu__back-button', '.app-menu__show-button', '.app-menu__body', '.app-menu__body-wrapper'
 ])
 
 const appProperties = Object.seal({
-  mobileMenuMaxHeight: appElements['app-menu__body'].el.getBoundingClientRect().height
+  mobileMenuMaxHeight: appElements['.app-menu__body'].el.getBoundingClientRect().height
 })
 
 const appState = reactivity({
@@ -41,28 +41,28 @@ const appState = reactivity({
     value: false,
     handler (_, value) {
       if (value) {
-        appElements['app-wrapper'].el.classList.add('app-wrapper--unfocused')
-        appElements['app-menu'].el.classList.add('app-menu--active')
-        appElements['app-menu__show-button'].el.classList.add('app-menu__show-button--show-less')
-        appElements['app-menu__body-wrapper'].css('max-height', appProperties.mobileMenuMaxHeight + 'px')
+        appElements['.app-wrapper'].el.classList.add('app-wrapper--unfocused')
+        appElements['.app-menu'].el.classList.add('app-menu--active')
+        appElements['.app-menu__show-button'].el.classList.add('app-menu__show-button--show-less')
+        appElements['.app-menu__body-wrapper'].css('max-height', appProperties.mobileMenuMaxHeight + 'px')
       } else {
-        appElements['app-wrapper'].el.classList.remove('app-wrapper--unfocused')
-        appElements['app-menu'].el.classList.remove('app-menu--active')
-        appElements['app-menu__show-button'].el.classList.remove('app-menu__show-button--show-less')
-        appElements['app-menu__body-wrapper'].css('max-height', 0)
+        appElements['.app-wrapper'].el.classList.remove('app-wrapper--unfocused')
+        appElements['.app-menu'].el.classList.remove('app-menu--active')
+        appElements['.app-menu__show-button'].el.classList.remove('app-menu__show-button--show-less')
+        appElements['.app-menu__body-wrapper'].css('max-height', 0)
       }
     }
   }
 })
 
-appElements['app-menu__header'].click((e, self) => {
+appElements['.app-menu__header'].click((e, self) => {
   if (e.target !== self) {
     return e.preventDefault()
   }
   appState.menuOpen = !appState.menuOpen
 })
 
-appElements['app-menu'].click((e, self) => {
+appElements['.app-menu'].click((e, self) => {
   if (e.target !== self) {
     return e.preventDefault()
   }
