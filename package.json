@@ -1,0 +1,25 @@
+{
+  "name": "arthurbergamaschi.com",
+  "version": "0.0.1",
+  "description": "Personal website",
+  "main": "index.js",
+  "scripts": {
+    "serve": "parcel app/*.html",
+    "build": "parcel build app/*.html",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arthurbergmz/arthurbergmz.github.io.git"
+  },
+  "author": "Arthur A. Bergamaschi <arthurbergmz@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/arthurbergmz/arthurbergmz.github.io/issues"
+  },
+  "homepage": "https://github.com/arthurbergmz/arthurbergmz.github.io#readme",
+  "devDependencies": {
+    "parcel-bundler": "^1.12.3",
+    "sass": "^1.18.0"
+  }
+}

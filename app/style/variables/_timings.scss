@@ -1,0 +1,8 @@
+$timing-regular: cubic-bezier(0.4, 0.0, 0.2, 1);
+$timing-bounce: cubic-bezier(0.25, 1.43, 0.35, 1.69);
+
+$timing-short-regular: 0.13s $timing-regular;
+$timing-large-regular: 0.33s $timing-regular;
+
+$timing-short-bounce: 0.13s $timing-bounce;
+$timing-large-bounce: 0.33s $timing-bounce;
