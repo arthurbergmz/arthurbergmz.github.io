@@ -45,28 +45,34 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0;
 }
 
+$font-sizing-h1: 2.197em;
 h1 {
-  font-size: 2.197em;
+  font-size: $font-sizing-h1;
 }
 
+$font-sizing-h2: 1.69em;
 h2 {
-  font-size: 1.69em;
+  font-size: $font-sizing-h2;
 }
 
+$font-sizing-h3: 1.3em;
 h3 {
-  font-size: 1.3em;
+  font-size: $font-sizing-h3;
 }
 
+$font-sizing-h4: 1em;
 h4 {
-  font-size: 1em;
+  font-size: $font-sizing-h4;
 }
 
+$font-sizing-h5: 0.769em;
 h5 {
-  font-size: 0.769em;
+  font-size: $font-sizing-h5;
 }
 
+$font-sizing-h6: 0.592em;
 h6 {
-  font-size: 0.592em;
+  font-size: $font-sizing-h6;
 }
 
 p {

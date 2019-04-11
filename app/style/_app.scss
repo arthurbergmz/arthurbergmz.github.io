@@ -18,6 +18,124 @@ body {
     }
   }
 
+  &-search-wrapper {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity $timing-large-regular;
+    background-color: rgba(0, 0, 0, 0.84);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+
+    &--active {
+      opacity: 1;
+      pointer-events: all;
+
+      .app-search {
+        opacity: 1;
+        transform: none;
+      }
+    }
+  }
+
+  &-search {
+    width: 100%;
+    max-width: $app-body-limit;
+    position: relative;
+    opacity: 0;
+    transition: opacity $timing-short-regular, transform $timing-short-regular;
+    transition-delay: $timing-short;
+    transform: translateY(16px);
+
+    &__input {
+      width: 100%;
+      padding: 32px 64px 0 32px;
+      background: none;
+      border: none;
+      font-size: $font-sizing-h1 * 1.5;
+      color: $colors-white;
+
+      &::-ms-input-placeholder {
+        opacity: 0;
+      }
+
+      &::-webkit-input-placeholder {
+        opacity: 0;
+      }
+
+      &::placeholder {
+        opacity: 0;
+      }
+
+      &:placeholder-shown + label {
+        opacity: 0.3;
+        transform: none;
+
+        & > .app-search__active {
+          color: $colors-white;
+        }
+      }
+
+      &:focus {
+        outline: none;
+
+        & + label {
+          opacity: 0.5;
+        }
+      }
+    }
+
+    &__label {
+      position: absolute;
+      font-family: $font-family-secondary;
+      font-size: $font-sizing-h1 * 1.5;
+      color: $colors-white;
+      top: 32px;
+      left: 32px;
+      opacity: 0.5;
+      pointer-events: none;
+      transition: transform $timing-short-regular, opacity $timing-short-regular;
+      transform-origin: left;
+      white-space: nowrap;
+      margin: 0;
+      transform: scale(0.75) translateY(-100%);
+    }
+
+    &__active {
+      color: $colors-blue;
+    }
+
+    &__clear-button {
+      position: absolute;
+      top: calc((2.197em * 1.5) / 2 + 32px);
+      right: 0;
+      background: none;
+      border: none;
+      opacity: 0;
+      pointer-events: none;
+      cursor: pointer;
+      transition: opacity $timing-short-regular;
+
+      &--visible {
+        opacity: 0.16;
+        pointer-events: all;
+      }
+
+      &:hover {
+        opacity: 0.75;
+      }
+
+      img {
+        width: 32px;
+        height: 32px;
+      }
+    }
+  }
+
   &-menu {
     position: fixed;
     width: 100%;
@@ -25,7 +143,7 @@ body {
     pointer-events: none;
     will-change: background-color;
     transition: background-color $timing-large-regular;
-    z-index: 1;
+    z-index: 2;
 
     @include media-breakpoint-large {
       display: none;
