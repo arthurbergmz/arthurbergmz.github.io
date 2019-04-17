@@ -35,12 +35,12 @@ appElements['.app-search-wrapper'].click((e, self) => {
 })
 
 appElements['.app-search__clear-button'].click(() => {
-  appState.searchLargeInput = ''
+  appState.searchInput = ''
   appElements['.app-search__input'].el.focus()
 })
 
 appElements['.app-search__input'].onEnter(() => {
-  console.log(appState.searchLargeInput)
+  console.log(appState.searchInput)
   appState.searchOpen = false
 })
 

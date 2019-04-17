@@ -12,6 +12,10 @@ module.exports = function (appElements) {
           appElements['.app-wrapper'].el.classList.add('app-wrapper--unfocused')
           appElements['.app-menu'].el.classList.add('app-menu--active')
           appElements['.app-menu__show-button'].el.classList.add('app-menu__show-button--show-less')
+          if (appProperties.mobileMenuMaxHeight === 0) {
+            // fix for when going from a large screen to a small screen. mobileMenuMaxHeight as 0 in large screens.
+            appProperties.mobileMenuMaxHeight = appElements['.app-menu__body'].el.getBoundingClientRect().height
+          }
           appElements['.app-menu__body-wrapper'].css('max-height', appProperties.mobileMenuMaxHeight + 'px')
           appElements['body'].css('overflow', 'hidden')
         } else {
@@ -37,7 +41,7 @@ module.exports = function (appElements) {
         }
       }
     },
-    searchLargeInput: {
+    searchInput: {
       value: appElements['.app-search__input'].el,
       handler (_, value) {
         const clearButton = appElements['.app-search__clear-button'].el
